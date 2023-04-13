@@ -3,6 +3,7 @@ const screens = document.querySelectorAll(".screen");
 const timeList = document.querySelector("#time-list");
 const timeEl = document.querySelector("#time");
 const board = document.querySelector("#board");
+const colors = ["red", "blue", "orange", "purple"];
 let time = 0;
 let score = 0;
 
@@ -59,6 +60,7 @@ function createRandomCircle() {
   const { width, height } = board.getBoundingClientRect();
   const x = getRondomNumber(0, width - size);
   const y = getRondomNumber(0, height - size);
+  circle.style.background = getRendomColor();
 
   circle.classList.add("circle");
   circle.style.width = `${size}px`;
@@ -71,4 +73,14 @@ function createRandomCircle() {
 
 function getRondomNumber(min, max) {
   return Math.round(Math.random() * (max - min) + min);
+}
+
+function setColor(element) {
+  const color = getRendomColor();
+  element.style.backgroundColor = color;
+}
+
+function getRendomColor() {
+  const index = Math.floor(Math.random() * colors.length);
+  return colors[index];
 }
